@@ -65,11 +65,7 @@ func writeData(rw *bufio.ReadWriter) {
 	stdReader := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Print("> ")
-		sendData, err := stdReader.ReadString('\n')
-		if err != nil {
-			log.Println(err)
-			return
-		}
+		sendData, _ := stdReader.ReadString('\n')
 		rw.WriteString(fmt.Sprintf("%s\n", sendData))
 		rw.Flush()
 	}
